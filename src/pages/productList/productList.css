@@ -1,0 +1,41 @@
+.productList {
+  flex: 4;
+}
+
+.productList{
+    flex: 4;
+    margin-left: 2rem;
+    font-size: 1.6rem;
+}
+
+.productListItem{
+    display: flex;
+    align-items: center;
+}
+
+.MuiDataGrid-main {
+    font-size: 1.5rem !important;
+}
+
+.productListImg {
+    width: 3.2rem;
+    height: 3.2rem;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 1rem;
+  }
+
+.productListEdit{
+    border: none;
+    border-radius: 1rem;
+    padding: .5rem 1rem;
+    background-color: #3bb077;
+    color: white;
+    cursor: pointer;
+    margin-right: 2rem;
+}
+
+.productListDelete{
+    color: red;
+    cursor: pointer;
+}

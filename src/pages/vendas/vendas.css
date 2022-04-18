@@ -1,0 +1,8 @@
+.estatisticas {
+  flex: 4;
+}
+
+.estatisticasTitulo {
+  margin-left: 2rem;
+  margin-bottom: .5rem;
+}
