@@ -22,7 +22,7 @@ export default function ProductList() {
         </div>
       )
     } },
-    { field: 'stock', headerName: 'Stock', width: 200 },
+    { field: 'estoque', headerName: 'Estoque', width: 200 },
     {
       field: 'status',
       headerName: 'Status',

@@ -24,3 +24,6 @@ yarn-error.log*
 
 # anotações
 /anotações.txt
+
+# Banco de dados
+/MySQL

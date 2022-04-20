@@ -53,7 +53,7 @@ export default function WidgetSm() {
         <li className="widgetSmListItem">
           <img src="https://images.unsplash.com/photo-1529068755536-a5ade0dcb4e8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=881&q=80" alt="" className="widgetSmImg" />
           <div className="widgetSmUser">
-            <span className="widgetSmUserName">Davis Miller</span>
+            <span className="widgetSmUserName">Davis Manson</span>
             <span className="widgetSmUserTitle">Frontend Developer</span>
           </div>
           <button className="widgetSmButton">
