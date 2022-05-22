@@ -9,7 +9,6 @@ import axios from "axios"
 export default function UserList() {
   const urlapi = "https://api-adminpanel.herokuapp.com/usuarios"
   const [data, setData] = useState([])
-  // const [data, setData] = useState(userRows);
 
   useEffect(() => {
     axios.get(urlapi)
@@ -23,7 +22,14 @@ export default function UserList() {
   console.log(data)
 
   const handleDelete = (id) => {
-    setData(data.filter(item => item.id !== id));
+    axios.delete(`https://api-adminpanel.herokuapp.com/usuarios/${id}`)
+      .then(resposta => {
+        console.log('Usuário deletado')
+        window.location.reload()
+      })
+      .catch(error => {
+        console.log(error)
+      })
   }
 
   const columns = [
@@ -58,7 +64,7 @@ export default function UserList() {
             <Link to={"/user/" + params.row._id}>
               <button className="userListEdit">Edit</button>
             </Link>
-            <DeleteOutline className="userListDelete" onClick={() => handleDelete(params.row.id)} />
+            <DeleteOutline className="userListDelete" onClick={() => handleDelete(params.row._id)} />
           </>
         )
       }
@@ -67,6 +73,9 @@ export default function UserList() {
 
     return (
       <div style={{ height: 400, width: '80%', marginLeft: '20px' }}>
+        <Link to="/newuser">
+          <button className="userAddButton">Create</button>
+        </Link>
         <DataGrid
           getRowId={(data) => data._id}
           rows={data}

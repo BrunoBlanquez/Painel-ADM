@@ -6,7 +6,7 @@
 .userTitleContainer {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .userAddButton {
@@ -61,6 +61,7 @@
 
 .userShowUsername {
   font-weight: 600;
+  font-size: 2.5rem;
 }
 
 .userShowUserTitle {

@@ -16,7 +16,6 @@ import NewProduct from "./pages/newProduct/NewProduct";
 import Transactions from "./pages/transactions/Transactions";
 import Vendas from "./pages/vendas/Vendas"
 import Estatisticas from "./pages/estatisticas/Estatisticas";
-import UserListAPI from "./pages/userList/UserList API";
 
 function App() {
   return (
@@ -52,7 +51,6 @@ function App() {
           </Route>
           <Route path="/estatisticas">
             {/* <Estatisticas /> */}
-            <UserListAPI />
           </Route>
         </Switch>
       </div>
