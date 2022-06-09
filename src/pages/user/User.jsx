@@ -1,13 +1,14 @@
-import {useState, useEffect} from 'react'
+import React, {useState, useEffect} from 'react'
 import "./user.css"
 import {CalendarToday, LocationCity, MailOutline, PermIdentity, PhoneAndroid, Publish} from '@mui/icons-material';
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
+import { useForm } from "react-hook-form";
 import axios from "axios"
 
 export default function User() {
   const id = useParams()
-  const urlapi = `https://api-adminpanel.herokuapp.com/usuarios/${id.userID}`
-  const [data, setData] = useState([])
+  const urlapi = `https://api-adminpanel.herokuapp.com/users/${id.userID}`
+  const [data, setData] = useState({})
 
   useEffect(() => {
     axios.get(urlapi)
@@ -18,7 +19,19 @@ export default function User() {
         console.log(error)
       })
   }, [])
-  
+
+  const { register, handleSubmit } = useForm()
+
+  const onSubmit = async valor => {
+     for(let key in valor) {
+        if(valor[key] === "") {
+           valor[key] = data[key]
+        }
+      }
+    console.log(valor)
+    const res = await axios.put(urlapi, valor)
+    };
+
   return (
     <div className="user">
       <div className="userTitleContainer">
@@ -40,7 +53,7 @@ export default function User() {
             </div>
             <div className="userShowInfo">
               <CalendarToday className="userShowIcon" />
-              <span className="userShowInfoTitle">{data.aniversario}</span>
+              <span className="userShowInfoTitle">{data.nascimento}</span>
             </div>
             <span className="userShowTitle">Contact Details</span>
             <div className="userShowInfo">
@@ -59,27 +72,27 @@ export default function User() {
         </div>
         <div className="userUpdate">
           <span className="userUpdateTitle">Edit</span>
-          <form className="userUpdateForm">
+          <form className="userUpdateForm" onSubmit = { handleSubmit(onSubmit)}>
             <div className="userUpdateLeft">
               <div className="userUpdateItem">
-                <label>Username</label>
-                <input type="text" placeholder={data.usuario} className="userUpdateInput" />
+                <label>Usuário</label>
+                <input type="text" placeholder={data.usuario} className="userUpdateInput" { ...register ('usuario', { pattern: /^[A-Za-z]/i }) } />
               </div>
               <div className="userUpdateItem">
                 <label>Nome completo</label>
-                <input type="text" placeholder={data.nome_completo} className="userUpdateInput" />
+                <input type="text" placeholder={data.nome_completo} className="userUpdateInput" { ...register ('nome_completo', { pattern: /^[A-Za-z\s]+$/ }) } />
               </div>
               <div className="userUpdateItem">
                 <label>Email</label>
-                <input type="text" placeholder={data.email} className="userUpdateInput" />
+                <input type="text" placeholder={data.email} className="userUpdateInput" { ...register('email', { maxLength: 100 }) } />
               </div>
               <div className="userUpdateItem">
                 <label>Telefone</label>
-                <input type="text" placeholder={data.telefone} className="userUpdateInput" />
+                <input type="text" placeholder={data.telefone} className="userUpdateInput" { ...register('telefone', { maxLength: 11 }) } />
               </div>
               <div className="userUpdateItem">
                 <label>Endereço</label>
-                <input type="text" placeholder={data.endereco} className="userUpdateInput" />
+                <input type="text" placeholder={data.endereco} className="userUpdateInput" { ...register('endereco', { maxLength: 100 }) } />
               </div>
             </div>
             <div className="userUpdateRight">
@@ -88,7 +101,7 @@ export default function User() {
                 <label htmlFor="file"><Publish /></label>
                 <input type="file" id="file" style={{display: 'none'}}/>
               </div>
-              <button className="userUpdateButton">Update</button>
+              <button className="userUpdateButton" type="submit">Update</button>
             </div>
           </form>
         </div>

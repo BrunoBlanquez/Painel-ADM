@@ -1,17 +1,15 @@
 import "./userList.css"
 import { DataGrid } from '@mui/x-data-grid';
 import {DeleteOutline} from '@mui/icons-material';
-// import {userRows} from "../../dummyData";
 import { Link } from "react-router-dom";
 import {useState, useEffect} from 'react'
 import axios from "axios"
 
 export default function UserList() {
-  const urlapi = "https://api-adminpanel.herokuapp.com/usuarios"
   const [data, setData] = useState([])
 
   useEffect(() => {
-    axios.get(urlapi)
+    axios.get(`https://api-adminpanel.herokuapp.com/users`)
       .then(resposta => {
         setData(resposta.data)
       })
@@ -22,7 +20,7 @@ export default function UserList() {
   console.log(data)
 
   const handleDelete = (id) => {
-    axios.delete(`https://api-adminpanel.herokuapp.com/usuarios/${id}`)
+    axios.delete(`https://api-adminpanel.herokuapp.com/users/${id}`)
       .then(resposta => {
         console.log('Usuário deletado')
         window.location.reload()
@@ -82,7 +80,7 @@ export default function UserList() {
           disableSelectionOnClick
           columns={columns}
           pageSize={10}
-          rowsPerPageOptions={[5]}
+          rowsPerPageOptions={[15]}
           checkboxSelection
         />
       </div>
