@@ -88,7 +88,7 @@ export default function User() {
               </div>
               <div className="userUpdateItem">
                 <label>Telefone</label>
-                <input type="text" placeholder={data.telefone} className="userUpdateInput" { ...register('telefone', { maxLength: 11 }) } />
+                <input type="text" placeholder={data.telefone} className="userUpdateInput" { ...register('telefone', { maxLength: 13 }) } />
               </div>
               <div className="userUpdateItem">
                 <label>Endereço</label>

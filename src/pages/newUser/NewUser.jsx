@@ -18,9 +18,7 @@ export default function NewUser() {
   }
 
   const onSubmit = async data =>  {
-    console.log(data)
     const requisicao = await axios.post(`https://api-adminpanel.herokuapp.com/users`, data)
-    console.log(requisicao)
     setSucesso(true)
   };
   
@@ -46,7 +44,7 @@ export default function NewUser() {
         </div>
         <div className="newUserItem">
           <label>Telefone</label>
-          <input type="text" placeholder="(11)99999-9999" { ...register('telefone', { maxLength: 11 }) }/>
+          <input type="text" placeholder="(11)99999-9999" { ...register('telefone', { maxLength: 14 }) }/>
         </div>
         <div className="newUserItem">
           <label>Endereço</label>
@@ -56,10 +54,10 @@ export default function NewUser() {
           <label>Nascimento</label>
           <input type="text" placeholder="15/10/1991" { ...register('nascimento', { maxLength: 10 }) }/>
         </div>
-        {/* <div className="newUserItem">
-          <label htmlFor="file"><Publish /></label>
-          <input type="file" id="file" style={{display: 'none'}} { ...register('avatar', { maxLength: 100 }) }/>
-        </div> */}
+        <div className="newUserItem">
+          <label htmlFor="text">Foto</label>
+          <input type="text" id="text" { ...register('avatar', { maxLength: 100 }) } placeholder="https://images..."/>
+        </div>
          <div className="newUserItem">
           <button className="newUserButton" type="submit">Criar</button>
          </div>

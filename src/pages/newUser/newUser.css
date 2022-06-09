@@ -31,16 +31,6 @@
   font-size: 1.6rem;
 }
 
-.newUserGender > input {
-  margin-top: 1.5rem;
-}
-
-.newUserGender>label{
-    margin: 1rem;
-    font-size: 1.8rem;
-    color: #555;
-}
-
 .newUserSelect{
     height: 4rem;
     border-radius: .5rem;
