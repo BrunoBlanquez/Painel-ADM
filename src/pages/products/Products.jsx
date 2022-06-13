@@ -1,17 +1,42 @@
+import React, {useState, useEffect} from 'react'
 import "./product.css"
-import { Link } from "react-router-dom/cjs/react-router-dom.min"
 import Chart from "../../components/chart/Chart"
 import { productData } from "../../dummyData"
 import { Publish } from "@mui/icons-material"
+import { useParams } from "react-router-dom/cjs/react-router-dom.min";
+import { useForm } from "react-hook-form";
+import axios from "axios"
 
 export default function Products() {
+  const id = useParams()
+  const urlapi = `https://api-adminpanel.herokuapp.com/products/${id.productsId}`
+  const [data, setData] = useState({})
+  const { register, handleSubmit } = useForm()
+
+  useEffect(() => {
+    axios.get(urlapi)
+      .then(resposta => {
+        setData(resposta.data)
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  }, [])
+
+  const onSubmit = async valor => {
+     for(let key in valor) {
+        if(valor[key] === "") {
+           valor[key] = data[key]
+        }
+      }
+    const res = await axios.put(urlapi, valor)
+    window.location.reload()
+  };
+
   return (
     <div className="products">
       <div className="productTitleContainer">
-        <h1 className="productTitle">Produto</h1>
-        <Link to="/newproduct">
-          <button className="productAddButton">Criar</button>
-        </Link>
+        <h1 className="productTitle">{data.nome}</h1>
       </div>
       <div className="productTop">
         <div className="productTopLeft">
@@ -19,8 +44,8 @@ export default function Products() {
         </div>
         <div className="productTopRight">
           <div className="productInfoTop">
-            <img src="https://images.pexels.com/photos/7156886/pexels-photo-7156886.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500" alt="" className="productInfoImg" />
-            <span className="productName">Apple Airpods</span>
+            <img src={data.imagem} alt="" className="productInfoImg" />
+            <span className="productName">{data.nome}</span>
           </div>
           <div className="productInfoBottom">
             <div className="productInfoItem">
@@ -43,24 +68,18 @@ export default function Products() {
         </div>
       </div>
       <div className="productBottom">
-        <form className="productForm">
+        <form className="productForm" onSubmit = { handleSubmit(onSubmit)}>
           <div className="productFormLeft">
             <label htmlFor="">Nome do Produto</label>
-            <input type="text" placeholder="Apple AirPod" />
-            <label>In Stock</label>
-            <select name="inStock" id="inStock">
-              <option value="sim">Sim</option>
-              <option value="no">Não</option>
-            </select>
-            <label>Ativo</label>
-            <select name="active" id="active">
-              <option value="sim">sim</option>
-              <option value="no">Não</option>
-            </select>
+            <input type="text" placeholder={data.nome} { ...register ('nome') }/>
+            <label>Marca</label>
+            <input type="text" placeholder={data.marca} { ...register ('marca') } />
+            <label>Preço</label>
+            <input type="text" placeholder={data.preco} { ...register ('preco') } />
           </div>
           <div className="productFormRight">
             <div className="productUpload">
-                <img src="https://images.pexels.com/photos/7156886/pexels-photo-7156886.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500" alt="" className="productUploadImg" />
+                <img src={data.imagem} alt="" className="productUploadImg" />
                 <label htmlFor="file">
                     <Publish/>
                 </label>

@@ -1,5 +1,4 @@
 import "./widgetSm.css"
-import { Visibility } from "@material-ui/icons";
 import {useState, useEffect} from 'react'
 import axios from "axios"
 import { Link } from "react-router-dom";
@@ -22,7 +21,7 @@ export default function WidgetSm() {
       <ul className="widgetSmList">
         {data.map((data) => (
           <li key={data._id} className="widgetSmListItem">
-            <img src={data.avatar} className="widgetSmImg" />
+            <img src={data.avatar} alt="" className="widgetSmImg" />
             <div className="widgetSmUser">
               <span className="widgetSmUserName">{data.nome_completo}</span>
               <span className="widgetSmUserTitle">{data.usuario}</span>

@@ -9,6 +9,7 @@ export default function User() {
   const id = useParams()
   const urlapi = `https://api-adminpanel.herokuapp.com/users/${id.userID}`
   const [data, setData] = useState({})
+  const { register, handleSubmit } = useForm()
 
   useEffect(() => {
     axios.get(urlapi)
@@ -20,7 +21,6 @@ export default function User() {
       })
   }, [])
 
-  const { register, handleSubmit } = useForm()
 
   const onSubmit = async valor => {
      for(let key in valor) {

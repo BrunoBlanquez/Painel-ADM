@@ -72,7 +72,6 @@ export default function UserList() {
       }
     }
   ];
-  let id = 1
 
     return (
       <div style={{ height: 700, width: '85%', marginLeft: '20px' }}>
