@@ -17,7 +17,6 @@ export default function UserList() {
         console.log(error)
       })
   }, [])
-  console.log(data)
 
   const handleDelete = (id) => {
     axios.delete(`https://api-adminpanel.herokuapp.com/users/${id}`)
