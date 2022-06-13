@@ -53,6 +53,11 @@ export default function UserList() {
       width: 135,
     },
     {
+      field: 'nascimento',
+      headerName: 'Nascimento',
+      width: 135,
+    },
+    {
       field: "action",
       headerName: "Action",
       width: 150,
@@ -68,9 +73,10 @@ export default function UserList() {
       }
     }
   ];
+  let id = 1
 
     return (
-      <div style={{ height: 400, width: '80%', marginLeft: '20px' }}>
+      <div style={{ height: 700, width: '85%', marginLeft: '20px' }}>
         <Link to="/newuser">
           <button className="userAddButton">Create</button>
         </Link>
@@ -80,8 +86,7 @@ export default function UserList() {
           disableSelectionOnClick
           columns={columns}
           pageSize={10}
-          rowsPerPageOptions={[15]}
-          checkboxSelection
+          rowsPerPageOptions={[25]}
         />
       </div>
     );
