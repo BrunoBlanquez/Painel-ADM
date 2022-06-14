@@ -18,6 +18,7 @@
 
 .widgetLgTh{
   text-align: left;
+  font-size: 1.5rem;
 }
 
 .widgetLgTr {
@@ -52,11 +53,11 @@
   font-size: 1.6rem;
 }
 
-.widgetLgButton.Aprovado{
+.widgetLgButton.Aprovada{
     background-color: #e5faf2;
     color: #3bb077;
 }
-.widgetLgButton.Reprovado{
+.widgetLgButton.Reprovada{
     background-color: #fff0f1;
     color: #d95087;
 
