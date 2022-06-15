@@ -1,9 +1,9 @@
 import './productList.css'
-import { DataGrid } from '@mui/x-data-grid';
 import {DeleteOutline} from '@mui/icons-material';
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios"
+import { DataGrid } from '@mui/x-data-grid';
 
 export default function ProductList() {
   const [itens, setItens] = useState([])
@@ -29,7 +29,15 @@ export default function ProductList() {
       })
   }
 
-   const columns = [
+  const getPreco = (itens) => {
+    // return itens.map((e) => e.preco.$numberDecimal)
+    return itens
+  }
+
+
+  console.log(getPreco(itens))
+
+  const columns = [
     { field: 'imagem', headerName: 'Imagem', width: 180, renderCell: (params) => {
       return (
         <div className="productListItem">
@@ -43,7 +51,10 @@ export default function ProductList() {
     {
       field: 'preco',
       headerName: 'Preco',
-      width: 90,
+      valueGetter: (itens) => {
+        return `R$ ${(itens.row.preco.$numberDecimal).replace('.', ',')}`; 
+     },
+      width: 120,
     },
     {
       field: "action",
@@ -68,13 +79,13 @@ export default function ProductList() {
       <Link to="/newproduct">
         <button className="productAddButton" style={{marginBottom: "1rem"}}>Criar</button>
       </Link>
-      <DataGrid
+       <DataGrid
           getRowId={(itens) => itens._id}
           rows={itens}
           disableSelectionOnClick
           columns={columns}
           pageSize={10}
-          rowsPerPageOptions={[5]}
+          rowsPerPageOptions={[10]}
         />
     </div>
   )

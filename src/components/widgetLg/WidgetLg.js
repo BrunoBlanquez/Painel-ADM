@@ -7,7 +7,6 @@ export default function WidgetLg() {
   useEffect(() => {
     axios.get(`https://api-adminpanel.herokuapp.com/transactions`)
       .then(resposta => {
-        console.log(resposta.data)
         setData(resposta.data.slice(-5))
       })
       .catch(error => {
@@ -40,7 +39,7 @@ export default function WidgetLg() {
             </td>
             <td className="widgetLgDate">{data.data.split("T")[0]}</td>
             <td className="widgetLgProduto">{data.produto.nome}</td>
-            <td className="widgetLgAmount">{data.produto.preco}</td>
+            <td className="widgetLgAmount">R$ {data.produto.preco + ',00'}</td>
             <td className="widgetLgStatus"><Button type={data.status} /></td>
           </tr>
           ))}

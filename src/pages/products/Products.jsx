@@ -11,12 +11,16 @@ export default function Products() {
   const id = useParams()
   const urlapi = `https://api-adminpanel.herokuapp.com/products/${id.productsId}`
   const [data, setData] = useState({})
+  const [preco, setPreco] = useState('')
   const { register, handleSubmit } = useForm()
 
-  useEffect(() => {
-    axios.get(urlapi)
+  useEffect(async () => {
+    const req = await axios.get(urlapi)
       .then(resposta => {
         setData(resposta.data)
+        setTimeout((data) => {
+          setPreco(Object.values(data.preco))
+        }, 1000, data)
       })
       .catch(error => {
         console.log(error)
@@ -32,6 +36,14 @@ export default function Products() {
     const res = await axios.put(urlapi, valor)
     window.location.reload()
   };
+
+  const emEstoque = (data) => {
+    if(data.estoque >= 1) {
+      return 'Sim'
+    } else {
+      return 'Não'
+    }
+  }
 
   return (
     <div className="products">
@@ -50,19 +62,15 @@ export default function Products() {
           <div className="productInfoBottom">
             <div className="productInfoItem">
               <span className="productInfoKey">id:</span>
-              <span className="productInfoValue">123</span>
+              <span className="productInfoValue">{data._id}</span>
             </div>
             <div className="productInfoItem">
-              <span className="productInfoKey">sales:</span>
+              <span className="productInfoKey">Vendas:</span>
               <span className="productInfoValue">1231</span>
             </div>
             <div className="productInfoItem">
-              <span className="productInfoKey">Ativo:</span>
-              <span className="productInfoValue">Sim</span>
-            </div>
-            <div className="productInfoItem">
-              <span className="productInfoKey">In stock:</span>
-              <span className="productInfoValue">Não</span>
+              <span className="productInfoKey">Em estoque:</span>
+              <span className="productInfoValue">{emEstoque(data)}</span>
             </div>
           </div>
         </div>
@@ -75,7 +83,7 @@ export default function Products() {
             <label>Marca</label>
             <input type="text" placeholder={data.marca} { ...register ('marca') } />
             <label>Preço</label>
-            <input type="text" placeholder={data.preco} { ...register ('preco') } />
+            <input type="text" placeholder={`R$ ${preco}`} { ...register ('preco') } />
           </div>
           <div className="productFormRight">
             <div className="productUpload">
