@@ -1,3 +1,8 @@
 .estatisticas {
-  width: 85%;
+  width: 85%;;
+}
+
+.estatisticasTitulo {
+  margin-left: 2rem;
+  margin-bottom: .5rem;
 }

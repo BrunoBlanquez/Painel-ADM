@@ -2,21 +2,11 @@ import "./userList.css"
 import { DataGrid } from '@mui/x-data-grid';
 import {DeleteOutline} from '@mui/icons-material';
 import { Link } from "react-router-dom";
-import {useState, useEffect} from 'react'
 import axios from "axios"
+import GetDadosAPI from "../../Func/GetDadosAPI";
 
 export default function UserList() {
-  const [data, setData] = useState([])
-
-  useEffect(() => {
-    axios.get(`https://api-adminpanel.herokuapp.com/users`)
-      .then(resposta => {
-        setData(resposta.data)
-      })
-      .catch(error => {
-        console.log(error)
-      })
-  }, [])
+  const data = GetDadosAPI('users')
 
   const handleDelete = (id) => {
     axios.delete(`https://api-adminpanel.herokuapp.com/users/${id}`)

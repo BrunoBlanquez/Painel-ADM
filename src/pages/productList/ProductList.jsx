@@ -1,22 +1,12 @@
 import './productList.css'
 import {DeleteOutline} from '@mui/icons-material';
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
 import axios from "axios"
 import { DataGrid } from '@mui/x-data-grid';
+import GetDadosAPI from '../../Func/GetDadosAPI';
 
 export default function ProductList() {
-  const [itens, setItens] = useState([])
-
-  useEffect(() => {
-    axios.get(`https://api-adminpanel.herokuapp.com/products`)
-      .then(resposta => {
-        setItens(resposta.data)
-      })
-      .catch(error => {
-        console.log(error)
-      })
-  }, [])
+  const itens = GetDadosAPI('products')
 
   const handleDelete = (id) => {
     axios.delete(`https://api-adminpanel.herokuapp.com/products/${id}`)
@@ -28,14 +18,6 @@ export default function ProductList() {
         console.log(error)
       })
   }
-
-  const getPreco = (itens) => {
-    // return itens.map((e) => e.preco.$numberDecimal)
-    return itens
-  }
-
-
-  console.log(getPreco(itens))
 
   const columns = [
     { field: 'imagem', headerName: 'Imagem', width: 180, renderCell: (params) => {

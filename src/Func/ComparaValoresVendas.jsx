@@ -10,7 +10,7 @@ export default function ComparaValoresVendas({valor1, valor2}) {
   return (
     <div>
       <div className="featuredMoneyContainer">
-        <span className="featuredMoney">R$ {resultado}</span>
+        <span className="featuredMoney">R$ {resultado.toFixed(2)}</span>
         <span className="featuredMoneyRate resulPorcentagem">{resultEmPorcentagem.toFixed(0) + '%'} {indicador}</span>
       </div>
       <span className="featuredSub">Comparação com mês anterior</span>
