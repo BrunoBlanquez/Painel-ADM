@@ -2,6 +2,8 @@ import './featuredInfo.css'
 import { ArrowDownward, ArrowUpward } from "@material-ui/icons";
 import {useState, useEffect} from 'react'
 import axios from "axios"
+import PegaValorVendas from '../../Func/PegaValorVendas';
+import ComparaValoresVendas from '../../Func/ComparaValoresVendas';
 
 export default function FeaturedInfo() {
   const [data, setData] = useState([])
@@ -14,52 +16,34 @@ export default function FeaturedInfo() {
         console.log(error)
       })
   }, [])
-  
-  let vendasMaio = 0
-  let vendasJunho = 0
 
-  const pegaVendasMaio = data.map((a) => {
-    let pegaDatas = new Date(a.data)
-    if (pegaDatas.getMonth() === 4) {
-      let valorIndividual = a.produto.preco
-      vendasMaio = vendasMaio + valorIndividual
-    } 
-  })
-  const pegaVendasJunho = data.map((a) => {
-    let pegaDatas = new Date(a.data)
-    if (pegaDatas.getMonth() === 5) {
-      let valorIndividual = a.produto.preco
-      vendasJunho = vendasJunho + valorIndividual
-    } 
-  })
-  console.log(vendasMaio)
-  console.log(vendasJunho)
+  const mesAtual = PegaValorVendas(5)
+  const mesAnterior = PegaValorVendas(4)
+  const comparação = ComparaValoresVendas(mesAtual, mesAnterior)
 
   return (
     <div className='featured'>
       <div className="featuredItem">
         <span className="featuredTitle">Vendas mês anterior</span>
         <div className="featuredMoneyContainer">
-          <span className="featuredMoney">R$ 2.028,43</span>
+          <span className="featuredMoney">R$ {mesAnterior}</span>
           <span className="featuredMoneyRate">-11.4 <ArrowDownward className='featuredIcon negative'/></span>
         </div>
-        <span className="featuredSub">Comparação com mês anterior</span>
+        <span className="featuredSub">Comparação com ano anterior</span>
       </div>
        <div className="featuredItem">
         <span className="featuredTitle">Vendas mês atual</span>
         <div className="featuredMoneyContainer">
-          <span className="featuredMoney">R$ 4.044,68</span>
+          <span className="featuredMoney">R$ {mesAtual}</span>
           <span className="featuredMoneyRate">-1.2 <ArrowDownward className='featuredIcon negative'/></span>
         </div>
-        <span className="featuredSub">Comparação com mês anterior</span>
+        <span className="featuredSub">Comparação com ano anterior</span>
       </div>
        <div className="featuredItem">
-        <span className="featuredTitle">Comparação</span>
+        <span className="featuredTitle">Comparação mês anterior</span>
         <div className="featuredMoneyContainer">
-          <span className="featuredMoney">R$ 2.016,25</span>
-          <span className="featuredMoneyRate">+2.4 <ArrowUpward className='featuredIcon'/></span>
+          <ComparaValoresVendas valor1={mesAtual} valor2={mesAnterior}/>
         </div>
-        <span className="featuredSub">Comparação com mês anterior</span>
       </div>
     </div>
   )

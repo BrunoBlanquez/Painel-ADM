@@ -39,7 +39,7 @@ export default function WidgetLg() {
             </td>
             <td className="widgetLgDate">{data.data.split("T")[0]}</td>
             <td className="widgetLgProduto">{data.produto.nome}</td>
-            <td className="widgetLgAmount">R$ {data.produto.preco + ',00'}</td>
+            <td className="widgetLgAmount">R$ {data.produto.preco['$numberDecimal']}</td>
             <td className="widgetLgStatus"><Button type={data.status} /></td>
           </tr>
           ))}

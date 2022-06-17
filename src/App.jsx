@@ -15,7 +15,7 @@ import Products from "./pages/products/Products";
 import NewProduct from "./pages/newProduct/NewProduct";
 import Transactions from "./pages/transactions/Transactions";
 import Vendas from "./pages/vendas/Vendas"
-import Estatisticas from "./pages/estatisticas/Estatisticas";
+// import Estatisticas from "./pages/estatisticas/Estatisticas";
 
 function App() {
   return (

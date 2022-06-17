@@ -15,37 +15,41 @@
 }
 
 .featuredTitle{
-    font-size: 2rem;
+	font-size: 2rem;
 }
 
 .featuredMoneyContainer{
-    margin: 1rem 0px;
-    display: flex;
-    align-items: center;
+	margin: 1rem 0px;
+	display: flex;
+	align-items: center;
 }
 
 .featuredMoney{
-    font-size: 3rem;
-    font-weight: 600;
+	font-size: 3rem;
+	font-weight: 600;
 }
 
 .featuredMoneyRate{
-    display: flex;
-    align-items: center;
-    margin-left: 2rem;
+	display: flex;
+	align-items: center;
+	margin-left: 2rem;
 }
 
 .featuredIcon{
-    font-size: 1.4rem;
-    margin-left: .5rem;
-    color: green;
+	font-size: 1.4rem;
+	margin-left: .5rem;
+	color: green;
 }
 
 .featuredIcon.negative{
-    color: red;
+  color: red;
 }
 
 .featuredSub{
-    font-size: 1.5rem;
-    color: gray;
+  font-size: 1.5rem;
+  color: gray;
+}
+
+.resulPorcentagem {
+  font-size: 1.5rem;
 }
