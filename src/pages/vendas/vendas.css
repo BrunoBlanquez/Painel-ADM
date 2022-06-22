@@ -1,8 +1,112 @@
-.estatisticas {
+.vendas {
   width: 85%;;
 }
 
-.estatisticasTitulo {
+.vendasTitulo {
   margin-left: 2rem;
   margin-bottom: .5rem;
+}
+
+.vendasDivEscolha {
+  display: flex;
+  margin: 2rem 2rem .5rem 2rem;
+}
+
+.vendasUserSec {
+  margin-left: 2rem;
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.vendasH2 {
+  font-size: 1.6rem;
+  font-weight: 600;
+  width: 200px;
+}
+
+.vendasOptions {
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.vendasSelect {
+  width: 200px;
+  font-size: 1.6rem;
+  border-radius: 15px;
+}
+
+.vendasEscolhaUser {
+  display: flex;
+  align-items: center;
+  margin-top: 1.5rem;
+  cursor: pointer;
+}
+
+.vendasImg {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 1rem;
+}
+
+.vendasSec {
+  margin-right: 3rem;
+}
+
+.ativo {
+  margin-left: 2rem;
+  display: block;
+}
+
+.inativo {
+  display: none;
+}
+
+.optionStatus {
+  width: 125px;
+  font-size: 1.6rem;
+}
+
+.resultadosEscolhas {
+  margin-left: 2rem;
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.btnVendas {
+    border: none;
+    border-radius: 1rem;
+    padding: .5rem 1rem;
+    background-color: #3bb077;
+    color: white;
+    cursor: pointer;
+    margin-right: 2rem;
+    width: 15rem;
+    height: 5rem;
+    font-size: 2.5rem;
+    margin-top: 5rem;
+}
+
+.vendasEscolhasSelect {
+  display: flex;
+  flex-direction: column;
+}
+
+.labelSelect {
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+.tituloEscolhas {
+  font-weight: bold;
+}
+
+.escolhasItens {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+  justify-content: center;
 }

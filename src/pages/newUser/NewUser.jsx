@@ -1,7 +1,8 @@
 import "./newUser.css"
 import { useForm } from "react-hook-form";
-import axios from "axios";
 import { useState } from "react";
+import PostaAPI from "../../Func/EnviaTransacAPI";
+
 
 export default function NewUser() {
   const { register, handleSubmit } = useForm();
@@ -18,7 +19,7 @@ export default function NewUser() {
   }
 
   const onSubmit = async data =>  {
-    const requisicao = await axios.post(`https://api-adminpanel.herokuapp.com/users`, data)
+    PostaAPI(data, 'users')
     setSucesso(true)
   };
   
@@ -56,7 +57,7 @@ export default function NewUser() {
         </div>
         <div className="newUserItem">
           <label htmlFor="text">Foto</label>
-          <input type="text" id="text" { ...register('avatar', { maxLength: 100 }) } placeholder="https://images..."/>
+          <input type="text" id="text" { ...register('avatar', { maxLength: 1000 }) } placeholder="https://images..."/>
         </div>
          <div className="newUserItem">
           <button className="newUserButton" type="submit">Criar</button>

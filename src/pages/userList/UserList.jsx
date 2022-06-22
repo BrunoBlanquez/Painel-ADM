@@ -4,9 +4,10 @@ import {DeleteOutline} from '@mui/icons-material';
 import { Link } from "react-router-dom";
 import axios from "axios"
 import GetDadosAPI from "../../Func/GetDadosAPI";
+import {useState, useEffect} from 'react'
 
 export default function UserList() {
-  const data = GetDadosAPI('users')
+  const data = GetDadosAPI( 'users')
 
   const handleDelete = (id) => {
     axios.delete(`https://api-adminpanel.herokuapp.com/users/${id}`)
@@ -25,7 +26,6 @@ export default function UserList() {
       return (
         <div className="userListUser">
           <img className="userListImg" src={params.row.avatar} alt="Avatar do usuário" />
-
         </div>
       )
     } },
