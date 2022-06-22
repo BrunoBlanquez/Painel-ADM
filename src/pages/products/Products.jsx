@@ -18,9 +18,7 @@ export default function Products() {
     const req = await axios.get(urlapi)
       .then(resposta => {
         setData(resposta.data)
-        setTimeout((data) => {
-          setPreco(Object.values(data.preco))
-        }, 1000, data)
+        setPreco(Object.values(resposta.data.preco))
       })
       .catch(error => {
         console.log(error)
@@ -33,6 +31,7 @@ export default function Products() {
            valor[key] = data[key]
         }
       }
+    console.log(valor)
     const res = await axios.put(urlapi, valor)
     window.location.reload()
   };
@@ -83,7 +82,7 @@ export default function Products() {
             <label>Marca</label>
             <input type="text" placeholder={data.marca} { ...register ('marca') } />
             <label>Preço</label>
-            <input type="text" placeholder={`R$ ${preco}`} { ...register ('preco') } />
+            <input type="text" placeholder={preco[0]} { ...register ('preco') } />
           </div>
           <div className="productFormRight">
             <div className="productUpload">
