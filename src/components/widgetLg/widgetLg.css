@@ -53,17 +53,26 @@
   font-size: 1.6rem;
 }
 
-.widgetLgButton.Aprovada{
+.widgetLgButton.Aprovada {
     background-color: #e5faf2;
     color: #3bb077;
 }
-.widgetLgButton.Reprovada{
+.widgetLgButton.Reprovada {
     background-color: #fff0f1;
     color: #d95087;
 
 }
-.widgetLgButton.Pendente{
+.widgetLgButton.Pendente {
     background-color: #ebf1fe;
     color: #2a7ade;
+}
 
+@media (max-width: 650px) {
+  .widgetLgUser, .widgetLgDate, .widgetLgProduto, .widgetLgAmount, .widgetLgStatus, .widgetLgTh {
+    font-size: 1.3rem !important;
+  }
+
+  .widgetLgButton.Aprovada, .widgetLgButton.Reprovada, .widgetLgButton.Pendente {
+    font-size: 1.3rem !important;
+  }
 }

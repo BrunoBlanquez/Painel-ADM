@@ -1,7 +1,6 @@
 .sidebar {
-  /* flex: 1; */
   width: 15%;
-  height: calc(100vh - 50px);
+  height: auto;
   background-color: rgb(251,251,255);
   position: sticky;
   top: 5rem;
@@ -42,4 +41,63 @@
 .sidebarIcon {
   margin-right: 5px;
   font-size: 2rem !important;
+}
+
+.menuMobile {
+  display: none;
+}
+
+@media (max-width: 650px) {
+  .sidebarWrapper {
+    margin: .5rem;
+    padding: 0;
+  }
+
+  .sidebarMenu {
+    display: none;
+  }
+
+  .sidebarMenu.active {
+    display: block;
+    flex-wrap: wrap;
+  }
+
+  .menuMobile {
+    display: flex;
+    border: none;
+    padding: 0.5rem 1rem;
+    text-transform: uppercase;
+    color: #555;
+    cursor: pointer;
+    align-items: center;
+    position: relative;
+    background-color: transparent;
+    border-radius: 8px;
+    font-size: 1.5rem;
+  }
+
+  .menuMobile.active::before {
+    transform: rotate(90deg);
+  }
+
+  .menuMobile::before {
+    margin-right: 4px;
+    content: "";
+    display: inline-block;
+    height: 2px;
+    width: 12px;
+    background: #555;
+    box-shadow: 0 4px #555, 0 -4px #555;
+    transition: transform 0.3s;
+  }
+
+  .sidebar {
+    background-color: transparent;
+  }
+
+  .sidebar.active {
+    background-color: rgb(251,251,255);
+    width: auto;
+    height: 370px;
+  }
 }
