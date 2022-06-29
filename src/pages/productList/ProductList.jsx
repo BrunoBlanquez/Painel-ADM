@@ -57,7 +57,7 @@ export default function ProductList() {
   ];
 
   return (
-    <div className='productList'>
+    <div className='productList' style={{ height: 700, width: '85%', marginLeft: '20px' }}>
       <Link to="/newproduct">
         <button className="productAddButton" style={{marginBottom: "1rem"}}>Criar</button>
       </Link>
@@ -66,8 +66,8 @@ export default function ProductList() {
           rows={itens}
           disableSelectionOnClick
           columns={columns}
-          pageSize={10}
-          rowsPerPageOptions={[10]}
+          pageSize={20}
+          rowsPerPageOptions={[20]}
         />
     </div>
   )
