@@ -19,7 +19,7 @@ import Estatisticas from "./pages/estatisticas/Estatisticas";
 
 function App() {
   return (
-    <Router>
+    <Router basename={process.env.PUBLIC_URL}>
       <Topbar/>
       <div className="containerPaginas">
         <Sidebar/>
