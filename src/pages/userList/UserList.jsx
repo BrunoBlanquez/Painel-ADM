@@ -1,23 +1,12 @@
 import "./userList.css"
 import {DeleteOutline} from '@mui/icons-material';
 import { Link } from "react-router-dom";
-import axios from "axios"
 import GetDadosAPI from "../../Func/GetDadosAPI";
 import CriaTabela from "../../Func/CriaTabela";
+import DeletaRegistro from '../../Func/DeletaRegistro';
 
 export default function UserList() {
   const data = GetDadosAPI( 'users')
-
-  const handleDelete = (id) => {
-    axios.delete(`https://api-adminpanel.herokuapp.com/users/${id}`)
-      .then(resposta => {
-        console.log('Usuário deletado')
-        window.location.reload()
-      })
-      .catch(error => {
-        console.log(error)
-      })
-  }
 
   const columns = [
     { field: '_id', headerName: 'ID', width: 150 },
@@ -55,7 +44,7 @@ export default function UserList() {
             <Link to={"/user/" + params.row._id}>
               <button className="userListEdit">Edit</button>
             </Link>
-            <DeleteOutline className="userListDelete" onClick={() => handleDelete(params.row._id)} />
+            <DeleteOutline className="userListDelete" onClick={() => DeletaRegistro('users', params.row._id)} />
           </>
         )
       }

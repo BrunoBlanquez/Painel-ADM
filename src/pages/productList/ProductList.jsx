@@ -1,24 +1,12 @@
 import './productList.css'
 import {DeleteOutline} from '@mui/icons-material';
 import { Link } from "react-router-dom";
-import axios from "axios"
-import { DataGrid } from '@mui/x-data-grid';
 import GetDadosAPI from '../../Func/GetDadosAPI';
 import CriaTabela from "../../Func/CriaTabela";
+import DeletaRegistro from '../../Func/DeletaRegistro';
 
 export default function ProductList() {
   const itens = GetDadosAPI('products')
-
-  const handleDelete = (id) => {
-    axios.delete(`https://api-adminpanel.herokuapp.com/products/${id}`)
-      .then(resposta => {
-        console.log('Produtos deletado')
-        window.location.reload()
-      })
-      .catch(error => {
-        console.log(error)
-      })
-  }
 
   const columns = [
     { field: 'imagem', headerName: 'Imagem', width: 180, renderCell: (params) => {
@@ -49,8 +37,7 @@ export default function ProductList() {
             <Link to={"/product/" + params.row._id}>
               <button className="productListEdit">Edit</button>
             </Link>
-
-            <DeleteOutline className="productListDelete" onClick={() => handleDelete(params.row._id)} />
+            <DeleteOutline className="productListDelete" onClick={() => DeletaRegistro('products', params.row._id)} />
           </>
         )
       }
