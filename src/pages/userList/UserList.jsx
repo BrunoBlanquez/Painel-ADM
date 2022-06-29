@@ -6,7 +6,7 @@ import CriaTabela from "../../Func/CriaTabela";
 import DeletaRegistro from '../../Func/DeletaRegistro';
 
 export default function UserList() {
-  const data = GetDadosAPI( 'users')
+  const data = GetDadosAPI('users')
 
   const columns = [
     { field: '_id', headerName: 'ID', width: 150 },
