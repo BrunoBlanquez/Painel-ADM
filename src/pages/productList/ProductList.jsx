@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import axios from "axios"
 import { DataGrid } from '@mui/x-data-grid';
 import GetDadosAPI from '../../Func/GetDadosAPI';
+import CriaTabela from "../../Func/CriaTabela";
 
 export default function ProductList() {
   const itens = GetDadosAPI('products')
@@ -57,18 +58,6 @@ export default function ProductList() {
   ];
 
   return (
-    <div className='productList' style={{ height: 700, width: '85%', marginLeft: '20px' }}>
-      <Link to="/newproduct">
-        <button className="productAddButton" style={{marginBottom: "1rem"}}>Criar</button>
-      </Link>
-       <DataGrid
-          getRowId={(itens) => itens._id}
-          rows={itens}
-          disableSelectionOnClick
-          columns={columns}
-          pageSize={20}
-          rowsPerPageOptions={[20]}
-        />
-    </div>
+    CriaTabela(itens, columns, 'newproduct')
   )
 }

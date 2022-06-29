@@ -1,10 +1,9 @@
 import "./userList.css"
-import { DataGrid } from '@mui/x-data-grid';
 import {DeleteOutline} from '@mui/icons-material';
 import { Link } from "react-router-dom";
 import axios from "axios"
 import GetDadosAPI from "../../Func/GetDadosAPI";
-import {useState, useEffect} from 'react'
+import CriaTabela from "../../Func/CriaTabela";
 
 export default function UserList() {
   const data = GetDadosAPI( 'users')
@@ -64,18 +63,6 @@ export default function UserList() {
   ];
 
     return (
-      <div style={{ height: 700, width: '85%', marginLeft: '20px' }}>
-        <Link to="/newuser">
-          <button className="userAddButton">Create</button>
-        </Link>
-        <DataGrid
-          getRowId={(data) => data._id}
-          rows={data}
-          disableSelectionOnClick
-          columns={columns}
-          pageSize={10}
-          rowsPerPageOptions={[25]}
-        />
-      </div>
+      CriaTabela(data, columns, 'newuser')
     );
 }
