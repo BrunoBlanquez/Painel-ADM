@@ -7,16 +7,12 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
-import axios from "axios"
-import {useState, useEffect} from 'react'
-import PegaValorVendas from "../../Func/PegaValorVendas";
 
 export default function Chart({title, data, dataKey, grid}) {
 
   return (
     <div className="chart">
       <h3 className="chartTitle">{title}</h3>
-      {/* Aspect é uma proporção. Se width for 10px, heigth vai ser 40px */}
       <ResponsiveContainer width="100%" aspect={4 / 1}>
         <LineChart data={data}>
           <XAxis dataKey="name" stroke="#5550bd" />

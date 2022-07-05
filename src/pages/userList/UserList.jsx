@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import GetDadosAPI from "../../Func/GetDadosAPI";
 import CriaTabela from "../../Func/CriaTabela";
 import DeletaRegistro from '../../Func/DeletaRegistro';
+import { useEffect } from "react";
 
 export default function UserList() {
   const data = GetDadosAPI('users')
@@ -50,6 +51,10 @@ export default function UserList() {
       }
     }
   ];
+
+  useEffect(() => {
+    CriaTabela(data, columns, 'newuser')
+  }, [data])
 
     return (
       CriaTabela(data, columns, 'newuser')

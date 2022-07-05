@@ -24,13 +24,13 @@ function App() {
       <div className="containerPaginas">
         <Sidebar/>
         <Switch>
-          <Route exact path="/" component={<Home />}>
+          <Route exact path={process.env.PUBLIC_URL + "/"} component={<Home />}>
             <Home />
           </Route>
-          <Route path="/users">
+          <Route path={process.env.PUBLIC_URL + "/users"}>
             <UserList />
           </Route>
-          <Route path="/user/:userID">
+          <Route path={process.env.PUBLIC_URL + "/user/:userID"}>
             <User />
           </Route>
           <Route path="/newuser" component={props => <NewUser {...props} />} />

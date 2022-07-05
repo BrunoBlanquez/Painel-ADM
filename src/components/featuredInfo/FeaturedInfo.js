@@ -1,5 +1,4 @@
 import './featuredInfo.css'
-// import { ArrowDownward, ArrowUpward } from "@material-ui/icons";
 import PegaValorVendas from '../../Func/PegaValorVendas';
 import ComparaValoresVendas from '../../Func/ComparaValoresVendas';
 
