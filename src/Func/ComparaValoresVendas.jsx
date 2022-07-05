@@ -1,9 +1,9 @@
 import React from 'react'
 import { ArrowDownward, ArrowUpward } from "@material-ui/icons";
 
-export default function ComparaValoresVendas({valor1, valor2}) {
-  const resultado = valor1 - valor2
-  const resultEmPorcentagem = (valor1 * 100)/valor2
+export default function ComparaValoresVendas({valorMesAtual, valorMesAnterior}) {
+  const resultado = valorMesAtual - valorMesAnterior
+  const resultEmPorcentagem = (valorMesAtual * 100)/valorMesAnterior
 
   let indicador = resultado >= 0 ? <ArrowUpward className='featuredIcon'/> : <ArrowDownward className='featuredIcon negative'/>
   
