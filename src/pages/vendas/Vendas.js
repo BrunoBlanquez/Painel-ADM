@@ -12,7 +12,7 @@ export default function Estatísticas() {
   const dadosProdutos = GetDadosAPI('products')
   const dadosAPI = {"comprador": user._id, "produto": item._id, "status": status}
   const [sucesso, setSucesso] = useState(false)
- 
+
   return (
     <div className="vendas">
       <h1 className="vendasTitulo">Simulação de vendas</h1>
@@ -38,7 +38,7 @@ export default function Estatísticas() {
         </section>
         <section className="vendasEscolhasSelect" onChange={(e) => setStatus(e.target.value)}>
           <label htmlFor="" className="labelSelect">Selecione o status da transação</label>
-          <select className="optionStatus">
+          <select className="optionStatus" required>
             <option value="" className="optionStatus"></option>
             <option value="Aprovada" className="optionStatus">Aprovada</option>
             <option value="Pendente" className="optionStatus">Pendente</option>

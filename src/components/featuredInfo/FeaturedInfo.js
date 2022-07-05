@@ -9,6 +9,9 @@ export default function FeaturedInfo() {
   const mesAtual = PegaValorVendas(dataAtual)
   const mesAnterior = PegaValorVendas(dataAtual - 1)
 
+  console.log(mesAnterior)
+  console.log(mesAtual)
+
   return (
     <div className='featured'>
       <div className="featuredItem">
@@ -28,7 +31,7 @@ export default function FeaturedInfo() {
        <div className="featuredItem">
         <span className="featuredTitle">Indicador de desempenho</span>
         <div className="featuredMoneyContainer">
-          <ComparaValoresVendas valor1={mesAtual} valor2={mesAnterior}/>
+          {ComparaValoresVendas(mesAtual,mesAnterior)}
         </div>
       </div>
     </div>

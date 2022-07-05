@@ -1,7 +1,7 @@
 import React from 'react'
 import { ArrowDownward, ArrowUpward } from "@material-ui/icons";
 
-export default function ComparaValoresVendas({valorMesAtual, valorMesAnterior}) {
+export default function ComparaValoresVendas(valorMesAtual, valorMesAnterior) {
   const resultado = valorMesAtual - valorMesAnterior
   const resultEmPorcentagem = (valorMesAtual * 100)/valorMesAnterior
 

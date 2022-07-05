@@ -52,11 +52,7 @@ export default function UserList() {
     }
   ];
 
-  useEffect(() => {
+  return (
     CriaTabela(data, columns, 'newuser')
-  }, [data])
-
-    return (
-      CriaTabela(data, columns, 'newuser')
-    );
+  );
 }
