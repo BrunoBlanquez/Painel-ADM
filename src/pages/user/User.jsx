@@ -28,7 +28,6 @@ export default function User() {
            valor[key] = data[key]
         }
       }
-    console.log(valor)
     const res = await axios.put(urlapi, valor)
     };
 

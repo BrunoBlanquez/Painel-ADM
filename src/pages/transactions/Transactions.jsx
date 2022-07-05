@@ -1,18 +1,9 @@
 import "./transactions.css"
-import {useState, useEffect} from 'react'
-import axios from "axios"
+import GetDadosAPI from "../../Func/GetDadosAPI"
 
 export default function Transactions() {
-  const [data, setData] = useState([])
-  useEffect(() => {
-    axios.get(`https://api-adminpanel.herokuapp.com/transactions`)
-      .then(resposta => {
-        setData(resposta.data.slice(-10))
-      })
-      .catch(error => {
-        console.log(error)
-      })
-  }, [])
+  const dadosTransacoes = GetDadosAPI('transactions').slice(-10)
+
 
   const Button = ({type}) => {
     return <button className={"widgetLgButton " + type}>{type}</button>
@@ -31,7 +22,7 @@ export default function Transactions() {
             <th className="widgetLgTh">Status</th>
           </tr>
           
-          {data.map((data) => (
+          {dadosTransacoes.map((data) => (
             <tr className="widgetLgTr" key={data._id}>
             <td className="widgetLgUser">
               <img src={data.comprador.avatar} alt="" className="widgetLgImg" />

@@ -18,7 +18,6 @@ export default function Estatísticas() {
       <h1 className="vendasTitulo">Simulação de vendas</h1>
       <div className={`${sucesso ? "inativo" : "vendasDivEscolha"}`}>
         <section className="vendasSec">
-          
           <h2 className="vendasH2">Escolha o usuário que vai efetuar a compra</h2>
             {dadosUsers.map((dadosUsers, index) => (
               <div key={index} className="vendasEscolhaUser ">
