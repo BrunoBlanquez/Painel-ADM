@@ -19,7 +19,6 @@ export default function NewProduct() {
 
     const onSubmit = async data =>  {
     PostaAPI(data, 'products')
-    console.log(data)
     setSucesso(true)
   };
 
